@@ -118,20 +118,25 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
         void onDateChanged();
     }
 
-    public DatePickerDialog() {
-        // Empty constructor required for dialog fragment.
-    }
-
-    public void initialize(OnDateSetListener callBack, Calendar selectedDate, Calendar minDate, Calendar maxDate, int textColor, int selectedTextColor, int accentColor, int disabledTextColor, int todayTextColor) {
+    public DatePickerDialog initialize(OnDateSetListener callBack, Calendar selectedDate) {
         mCallBack = callBack;
         setSelectedDate(selectedDate);
+        return this;
+    }
+
+    public DatePickerDialog setRange(Calendar minDate, Calendar maxDate) {
         setMinDate(minDate);
         setMaxDate(maxDate);
+        return this;
+    }
+
+    public DatePickerDialog setColors(int textColor, int selectedTextColor, int accentColor, int disabledTextColor, int todayTextColor) {
         this.textColor = textColor;
         this.selectedTextColor = selectedTextColor;
         this.accentColor = accentColor;
         this.disabledTextColor = disabledTextColor;
         this.todayTextColor = todayTextColor;
+        return this;
     }
 
     public int getTextColor() {
