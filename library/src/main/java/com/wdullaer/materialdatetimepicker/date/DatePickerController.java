@@ -36,7 +36,7 @@ public interface DatePickerController {
     boolean isThemeDark();
 
     int getAccentColor();
-    
+
     Calendar[] getHighlightedDays();
 
     Calendar[] getSelectableDays();

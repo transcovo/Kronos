@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
  * The time input is expected to use 24 hour mode.
  * Fields are modulo'd into their correct ranges.
  * It does not handle timezones.
- *
+ * <p/>
  * Created by wdullaer on 13/10/15.
  */
 public class Timepoint implements Parcelable, Comparable<Timepoint> {
@@ -28,20 +28,20 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
         this(time.hour, time.minute, time.second);
     }
 
-    public Timepoint(@IntRange(from=0, to=23) int hour,
-                     @IntRange(from=0, to=59) int minute,
-                     @IntRange(from=0, to=59) int second) {
+    public Timepoint(@IntRange(from = 0, to = 23) int hour,
+                     @IntRange(from = 0, to = 59) int minute,
+                     @IntRange(from = 0, to = 59) int second) {
         this.hour = hour % 24;
         this.minute = minute % 60;
         this.second = second % 60;
     }
 
-    public Timepoint(@IntRange(from=0, to=23) int hour,
-                     @IntRange(from=0, to=59) int minute) {
+    public Timepoint(@IntRange(from = 0, to = 23) int hour,
+                     @IntRange(from = 0, to = 59) int minute) {
         this(hour, minute, 0);
     }
 
-    public Timepoint(@IntRange(from=0, to=23) int hour) {
+    public Timepoint(@IntRange(from = 0, to = 23) int hour) {
         this(hour, 0);
     }
 
@@ -51,17 +51,17 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
         second = in.readInt();
     }
 
-    @IntRange(from=0, to=23)
+    @IntRange(from = 0, to = 23)
     public int getHour() {
         return hour;
     }
 
-    @IntRange(from=0, to=59)
+    @IntRange(from = 0, to = 59)
     public int getMinute() {
         return minute;
     }
 
-    @IntRange(from=0, to=59)
+    @IntRange(from = 0, to = 59)
     public int getSecond() {
         return second;
     }
@@ -75,11 +75,11 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
     }
 
     public void setAM() {
-        if(hour >= 12) hour = hour % 12;
+        if (hour >= 12) hour = hour % 12;
     }
 
     public void setPM() {
-        if(hour < 12) hour = (hour + 12) % 24;
+        if (hour < 12) hour = (hour + 12) % 24;
     }
 
     @Override
@@ -90,15 +90,14 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
             return other.getHour() == hour &&
                     other.getMinute() == minute &&
                     other.getSecond() == second;
-        }
-        catch(ClassCastException e) {
+        } catch (ClassCastException e) {
             return false;
         }
     }
 
     @Override
     public int compareTo(@NonNull Timepoint t) {
-        return (this.hour - t.hour)*3600 + (this.minute - t.minute)*60 + (this.second - t.second);
+        return (this.hour - t.hour) * 3600 + (this.minute - t.minute) * 60 + (this.second - t.second);
     }
 
     @Override

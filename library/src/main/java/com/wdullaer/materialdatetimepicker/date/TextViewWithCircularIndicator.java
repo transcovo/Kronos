@@ -69,8 +69,9 @@ public class TextViewWithCircularIndicator extends TextView {
 
     /**
      * Programmatically set the color state list (see mdtp_date_picker_year_selector)
+     *
      * @param accentColor pressed state text color
-     * @param darkMode current theme mode
+     * @param darkMode    current theme mode
      * @return ColorStateList with pressed state
      */
     private ColorStateList createTextColor(int accentColor, boolean darkMode) {
