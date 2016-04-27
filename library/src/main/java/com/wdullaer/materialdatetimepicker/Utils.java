@@ -138,37 +138,6 @@ public class Utils {
     }
 
     /**
-     * Gets the colorAccent from the current context, if possible/available
-     * @param context The context to use as reference for the color
-     * @return the accent color of the current context
-     */
-    public static int getAccentColorFromThemeIfAvailable(Context context) {
-        TypedValue typedValue = new TypedValue();
-        // First, try the android:colorAccent
-        if (Build.VERSION.SDK_INT >= 21) {
-            context.getTheme().resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-            return typedValue.data;
-        }
-        // Next, try colorAccent from support lib
-        int colorAccentResId = context.getResources().getIdentifier("colorAccent", "attr", context.getPackageName());
-        if (colorAccentResId != 0 && context.getTheme().resolveAttribute(colorAccentResId, typedValue, true)) {
-            return typedValue.data;
-        }
-        // Return the value in mdtp_accent_color
-        return ContextCompat.getColor(context, R.color.mdtp_accent_color);
-    }
-
-    /**
-     * Gets dialog type (Light/Dark) from current theme
-     * @param context The context to use as reference for the boolean
-     * @param current Default value to return if cannot resolve the attribute
-     * @return true if dark mode, false if light.
-     */
-    public static boolean isDarkTheme(Context context, boolean current) {
-        return resolveBoolean(context, R.attr.mdtp_theme_dark, current);
-    }
-
-    /**
      * Gets the required boolean value from the current context, if possible/available
      * @param context The context to use as reference for the boolean
      * @param attr Attribute id to resolve

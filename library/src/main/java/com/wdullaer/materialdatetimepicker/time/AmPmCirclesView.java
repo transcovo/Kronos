@@ -81,21 +81,14 @@ public class AmPmCirclesView extends View {
 
         Resources res = context.getResources();
 
-        if (controller.isThemeDark()) {
-            mUnselectedColor = ContextCompat.getColor(context, R.color.mdtp_circle_background_dark_theme);
-            mAmPmTextColor = ContextCompat.getColor(context, R.color.mdtp_white);
-            mAmPmDisabledTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_disabled_dark_theme);
-            mSelectedAlpha = SELECTED_ALPHA_THEME_DARK;
-        } else {
-            mUnselectedColor = ContextCompat.getColor(context, R.color.mdtp_white);
-            mAmPmTextColor = ContextCompat.getColor(context, R.color.mdtp_ampm_text_color);
-            mAmPmDisabledTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_disabled);
-            mSelectedAlpha = SELECTED_ALPHA;
-        }
+        mUnselectedColor = ContextCompat.getColor(context, controller.getCircleBackgroundColor());
+        mAmPmTextColor = ContextCompat.getColor(context, controller.getTextColor());
+        mAmPmDisabledTextColor = ContextCompat.getColor(context, controller.getDisabledTextColor());
+        mSelectedAlpha = SELECTED_ALPHA;
 
-        mSelectedColor = controller.getAccentColor();
-        mTouchedColor = Utils.darkenColor(mSelectedColor);
-        mAmPmSelectedTextColor = ContextCompat.getColor(context, R.color.mdtp_white);
+        mSelectedColor = ContextCompat.getColor(context, controller.getAccentColor());
+        mTouchedColor = ContextCompat.getColor(context, controller.getDisabledTextColor());
+        mAmPmSelectedTextColor = ContextCompat.getColor(context, controller.getSelectedTextColor());
 
         String typefaceFamily = res.getString(R.string.mdtp_sans_serif);
         Typeface tf = Typeface.create(typefaceFamily, Typeface.NORMAL);
