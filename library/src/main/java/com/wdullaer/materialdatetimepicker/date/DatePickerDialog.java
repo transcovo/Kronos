@@ -157,7 +157,7 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
 
     @Override
     public int getTodayTextColor() {
-        return 0;
+        return todayTextColor;
     }
 
     @Override
