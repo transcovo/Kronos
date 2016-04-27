@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
+import java.util.Calendar;
+
 /**
  * Simple utility class that represents a time in the day up to second precision
  * The time input is expected to use 24 hour mode.
@@ -13,7 +15,7 @@ import android.support.annotation.NonNull;
  * <p/>
  * Created by wdullaer on 13/10/15.
  */
-public class Timepoint implements Parcelable, Comparable<Timepoint> {
+public class TimePoint implements Parcelable, Comparable<TimePoint> {
     private int hour;
     private int minute;
     private int second;
@@ -24,11 +26,11 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
         SECOND
     }
 
-    public Timepoint(Timepoint time) {
+    public TimePoint(TimePoint time) {
         this(time.hour, time.minute, time.second);
     }
 
-    public Timepoint(@IntRange(from = 0, to = 23) int hour,
+    public TimePoint(@IntRange(from = 0, to = 23) int hour,
                      @IntRange(from = 0, to = 59) int minute,
                      @IntRange(from = 0, to = 59) int second) {
         this.hour = hour % 24;
@@ -36,16 +38,22 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
         this.second = second % 60;
     }
 
-    public Timepoint(@IntRange(from = 0, to = 23) int hour,
+    public TimePoint(Calendar date) {
+        this.hour = date.get(Calendar.HOUR_OF_DAY);
+        this.minute = date.get(Calendar.MINUTE);
+        this.second = date.get(Calendar.SECOND);
+    }
+
+    public TimePoint(@IntRange(from = 0, to = 23) int hour,
                      @IntRange(from = 0, to = 59) int minute) {
         this(hour, minute, 0);
     }
 
-    public Timepoint(@IntRange(from = 0, to = 23) int hour) {
+    public TimePoint(@IntRange(from = 0, to = 23) int hour) {
         this(hour, 0);
     }
 
-    public Timepoint(Parcel in) {
+    public TimePoint(Parcel in) {
         hour = in.readInt();
         minute = in.readInt();
         second = in.readInt();
@@ -85,7 +93,7 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
     @Override
     public boolean equals(Object o) {
         try {
-            Timepoint other = (Timepoint) o;
+            TimePoint other = (TimePoint) o;
 
             return other.getHour() == hour &&
                     other.getMinute() == minute &&
@@ -96,7 +104,7 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
     }
 
     @Override
-    public int compareTo(@NonNull Timepoint t) {
+    public int compareTo(@NonNull TimePoint t) {
         return (this.hour - t.hour) * 3600 + (this.minute - t.minute) * 60 + (this.second - t.second);
     }
 
@@ -112,14 +120,23 @@ public class Timepoint implements Parcelable, Comparable<Timepoint> {
         return 0;
     }
 
-    public static final Parcelable.Creator<Timepoint> CREATOR
-            = new Parcelable.Creator<Timepoint>() {
-        public Timepoint createFromParcel(Parcel in) {
-            return new Timepoint(in);
+    public static final Parcelable.Creator<TimePoint> CREATOR
+            = new Parcelable.Creator<TimePoint>() {
+        public TimePoint createFromParcel(Parcel in) {
+            return new TimePoint(in);
         }
 
-        public Timepoint[] newArray(int size) {
-            return new Timepoint[size];
+        public TimePoint[] newArray(int size) {
+            return new TimePoint[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Timepoint{" +
+                "hour=" + hour +
+                ", minute=" + minute +
+                ", second=" + second +
+                '}';
+    }
 }

@@ -203,21 +203,14 @@ public abstract class MonthView extends View {
         mDayOfWeekTypeface = res.getString(R.string.mdtp_day_of_week_label_typeface);
         mMonthTitleTypeface = res.getString(R.string.mdtp_sans_serif);
 
-        boolean darkTheme = mController != null && mController.isThemeDark();
-        if (darkTheme) {
-            mDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_normal_dark_theme);
-            mMonthDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_month_day_dark_theme);
-            mDisabledDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_disabled_dark_theme);
-            mHighlightedDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_highlighted_dark_theme);
-        } else {
-            mDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_normal);
-            mMonthDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_month_day);
-            mDisabledDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_disabled);
-            mHighlightedDayTextColor = ContextCompat.getColor(context, R.color.mdtp_date_picker_text_highlighted);
-        }
-        mSelectedDayTextColor = ContextCompat.getColor(context, R.color.mdtp_white);
-        mTodayNumberColor = mController.getAccentColor();
-        mMonthTitleColor = ContextCompat.getColor(context, R.color.mdtp_white);
+        mDayTextColor = ContextCompat.getColor(context, mController.getTextColor());
+        mMonthDayTextColor = ContextCompat.getColor(context, mController.getTextColor());
+        mDisabledDayTextColor = ContextCompat.getColor(context, mController.getDisabledTextColor());
+        mHighlightedDayTextColor = ContextCompat.getColor(context, mController.getTextColor());
+
+        mSelectedDayTextColor = ContextCompat.getColor(context, mController.getSelectedTextColor());
+        mTodayNumberColor = ContextCompat.getColor(context, mController.getTodayTextColor());
+        mMonthTitleColor = ContextCompat.getColor(context, mController.getTextColor());
 
         mStringBuilder = new StringBuilder(50);
         mFormatter = new Formatter(mStringBuilder, Locale.getDefault());

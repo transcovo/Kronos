@@ -33,13 +33,19 @@ public interface DatePickerController {
 
     MonthAdapter.CalendarDay getSelectedDay();
 
-    boolean isThemeDark();
-
-    int getAccentColor();
-
     Calendar[] getHighlightedDays();
 
     Calendar[] getSelectableDays();
+
+    int getTextColor();
+
+    int getSelectedTextColor();
+
+    int getAccentColor();
+
+    int getDisabledTextColor();
+
+    int getTodayTextColor();
 
     int getFirstDayOfWeek();
 

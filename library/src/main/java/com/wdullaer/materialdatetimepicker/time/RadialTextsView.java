@@ -95,7 +95,7 @@ public class RadialTextsView extends View {
         Resources res = context.getResources();
 
         // Set up the paint.
-        int textColorRes = controller.isThemeDark() ? R.color.mdtp_white : R.color.mdtp_numbers_text_color;
+        int textColorRes = controller.getTextColor();
         mPaint.setColor(ContextCompat.getColor(context, textColorRes));
         String typefaceFamily = res.getString(R.string.mdtp_radial_numbers_typeface);
         mTypefaceLight = Typeface.create(typefaceFamily, Typeface.NORMAL);
@@ -105,14 +105,13 @@ public class RadialTextsView extends View {
         mPaint.setTextAlign(Align.CENTER);
 
         // Set up the selected paint
-        int selectedTextColor = ContextCompat.getColor(context, R.color.mdtp_white);
+        int selectedTextColor = ContextCompat.getColor(context, controller.getSelectedTextColor());
         mSelectedPaint.setColor(selectedTextColor);
         mSelectedPaint.setAntiAlias(true);
         mSelectedPaint.setTextAlign(Align.CENTER);
 
         // Set up the inactive paint
-        int inactiveColorRes = controller.isThemeDark() ? R.color.mdtp_date_picker_text_disabled_dark_theme
-                : R.color.mdtp_date_picker_text_disabled;
+        int inactiveColorRes = controller.getDisabledTextColor();
         mInactivePaint.setColor(ContextCompat.getColor(context, inactiveColorRes));
         mInactivePaint.setAntiAlias(true);
         mInactivePaint.setTextAlign(Align.CENTER);
@@ -339,7 +338,7 @@ public class RadialTextsView extends View {
         PropertyValuesHolder fadeOut = PropertyValuesHolder.ofKeyframe("alpha", kf0, kf1);
 
         mDisappearAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                this, radiusDisappear, fadeOut).setDuration(duration);
+                this, fadeOut).setDuration(duration);
         mDisappearAnimator.addUpdateListener(mInvalidateUpdateListener);
 
 
