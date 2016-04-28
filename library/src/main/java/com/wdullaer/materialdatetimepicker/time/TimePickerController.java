@@ -22,7 +22,7 @@ public interface TimePickerController {
      * @param index int - The current view to consider when calculating the range
      * @return boolean - true if this is not a selectable value
      */
-    boolean isOutOfRange(TimePoint time, int index);
+    boolean isOutOfRange(Timeoint time, int index);
 
     /**
      * @return boolean - true if AM times are outside the range of valid selections
@@ -43,7 +43,7 @@ public interface TimePickerController {
      * @param type Timepoint.TYPE - whether we should round the hours, minutes or seconds
      * @return timepoint - the nearest valid timepoint
      */
-    TimePoint roundToNearest(TimePoint time, TimePoint.TYPE type);
+    Timeoint roundToNearest(Timeoint time, Timeoint.TYPE type);
 
     int getTextColor();
 
