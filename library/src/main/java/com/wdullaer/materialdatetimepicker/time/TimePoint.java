@@ -15,7 +15,7 @@ import java.util.Calendar;
  * <p/>
  * Created by wdullaer on 13/10/15.
  */
-public class Timeoint implements Parcelable, Comparable<Timeoint> {
+public class TimePoint implements Parcelable, Comparable<TimePoint> {
     private int hour;
     private int minute;
     private int second;
@@ -26,34 +26,34 @@ public class Timeoint implements Parcelable, Comparable<Timeoint> {
         SECOND
     }
 
-    public Timeoint(Timeoint time) {
+    public TimePoint(TimePoint time) {
         this(time.hour, time.minute, time.second);
     }
 
-    public Timeoint(@IntRange(from = 0, to = 23) int hour,
-                    @IntRange(from = 0, to = 59) int minute,
-                    @IntRange(from = 0, to = 59) int second) {
+    public TimePoint(@IntRange(from = 0, to = 23) int hour,
+                     @IntRange(from = 0, to = 59) int minute,
+                     @IntRange(from = 0, to = 59) int second) {
         this.hour = hour % 24;
         this.minute = minute % 60;
         this.second = second % 60;
     }
 
-    public Timeoint(Calendar date) {
+    public TimePoint(Calendar date) {
         this.hour = date.get(Calendar.HOUR_OF_DAY);
         this.minute = date.get(Calendar.MINUTE);
         this.second = date.get(Calendar.SECOND);
     }
 
-    public Timeoint(@IntRange(from = 0, to = 23) int hour,
-                    @IntRange(from = 0, to = 59) int minute) {
+    public TimePoint(@IntRange(from = 0, to = 23) int hour,
+                     @IntRange(from = 0, to = 59) int minute) {
         this(hour, minute, 0);
     }
 
-    public Timeoint(@IntRange(from = 0, to = 23) int hour) {
+    public TimePoint(@IntRange(from = 0, to = 23) int hour) {
         this(hour, 0);
     }
 
-    public Timeoint(Parcel in) {
+    public TimePoint(Parcel in) {
         hour = in.readInt();
         minute = in.readInt();
         second = in.readInt();
@@ -93,7 +93,7 @@ public class Timeoint implements Parcelable, Comparable<Timeoint> {
     @Override
     public boolean equals(Object o) {
         try {
-            Timeoint other = (Timeoint) o;
+            TimePoint other = (TimePoint) o;
 
             return other.getHour() == hour &&
                     other.getMinute() == minute &&
@@ -104,7 +104,7 @@ public class Timeoint implements Parcelable, Comparable<Timeoint> {
     }
 
     @Override
-    public int compareTo(@NonNull Timeoint t) {
+    public int compareTo(@NonNull TimePoint t) {
         return (this.hour - t.hour) * 3600 + (this.minute - t.minute) * 60 + (this.second - t.second);
     }
 
@@ -120,14 +120,14 @@ public class Timeoint implements Parcelable, Comparable<Timeoint> {
         return 0;
     }
 
-    public static final Parcelable.Creator<Timeoint> CREATOR
-            = new Parcelable.Creator<Timeoint>() {
-        public Timeoint createFromParcel(Parcel in) {
-            return new Timeoint(in);
+    public static final Parcelable.Creator<TimePoint> CREATOR
+            = new Parcelable.Creator<TimePoint>() {
+        public TimePoint createFromParcel(Parcel in) {
+            return new TimePoint(in);
         }
 
-        public Timeoint[] newArray(int size) {
-            return new Timeoint[size];
+        public TimePoint[] newArray(int size) {
+            return new TimePoint[size];
         }
     };
 
