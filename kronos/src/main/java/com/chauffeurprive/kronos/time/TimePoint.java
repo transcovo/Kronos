@@ -12,7 +12,7 @@ import java.util.Calendar;
  * The time input is expected to use 24 hour mode.
  * Fields are modulo'd into their correct ranges.
  * It does not handle timezones.
- * <p/>
+ *
  * Created by wdullaer on 13/10/15.
  */
 public class TimePoint implements Parcelable, Comparable<TimePoint> {
