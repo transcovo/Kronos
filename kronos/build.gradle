@@ -40,9 +40,9 @@ bintray {
         licenses = ["Apache-2.0"]
         vcsUrl = 'https://github.com/transcovo/Kronos.git'
         version {
-            name = '0.7.0'
-            desc = 'Kronos 0.7.0 first release'
-            vcsTag = '0.7.0'
+            name = '3.0.0'
+            desc = 'Kronos v3.0.0 first release'
+            vcsTag = 'v3.0.0'
         }
     }
 }
