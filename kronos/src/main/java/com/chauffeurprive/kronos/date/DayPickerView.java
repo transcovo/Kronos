@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -33,7 +34,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 import com.chauffeurprive.kronos.Utils;
-import com.chauffeurprive.kronos.date.DatePickerDialog.OnDateChangedListener;
+import com.chauffeurprive.kronos.date.DatePickerFragment.OnDateChangedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

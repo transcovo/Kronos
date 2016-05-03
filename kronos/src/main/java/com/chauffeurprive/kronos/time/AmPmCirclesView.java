@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -57,8 +58,8 @@ public class AmPmCirclesView extends View {
     private boolean mPmDisabled;
     private boolean mIsInitialized;
 
-    private static final int AM = TimePickerDialog.AM;
-    private static final int PM = TimePickerDialog.PM;
+    private static final int AM = TimePickerFragment.AM;
+    private static final int PM = TimePickerFragment.PM;
 
     private boolean mDrawValuesReady;
     private int mAmPmCircleRadius;

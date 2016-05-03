@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -27,9 +28,9 @@ public interface DatePickerController {
 
     void onDayOfMonthSelected(int year, int month, int day);
 
-    void registerOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+    void registerOnDateChangedListener(DatePickerFragment.OnDateChangedListener listener);
 
-    void unregisterOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+    void unregisterOnDateChangedListener(DatePickerFragment.OnDateChangedListener listener);
 
     MonthAdapter.CalendarDay getSelectedDay();
 
