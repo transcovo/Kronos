@@ -1,7 +1,28 @@
-plugins {
-    id "com.jfrog.bintray" version "1.6"
-}
 apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'kronos'
+
+    publishedGroupId = 'com.chauffeurprive'
+    libraryName = 'Kronos'
+    artifact = 'kronos'
+
+    libraryDescription = 'A embedded material date time picker'
+
+    siteUrl = 'https://github.com/transcovo/Kronos'
+    gitUrl = 'https://github.com/transcovo/Kronos.git'
+
+    libraryVersion = '3.0.0'
+
+    developerId = 'transcovo'
+    developerName = 'Chauffeur-Privé'
+    developerEmail = 'mobile.chpr@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
@@ -26,23 +47,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.1.1'
 }
 
-bintray {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    def bintrayUser = properties.getProperty('bintray.user')
-    def bintrayApiKey = properties.getProperty('bintray.apikey')
-
-    user = bintrayUser
-    key = bintrayApiKey
-    pkg {
-        repo = 'maven'
-        name = 'com.chauffeurprive.kronos'
-        licenses = ["Apache-2.0"]
-        vcsUrl = 'https://github.com/transcovo/Kronos.git'
-        version {
-            name = '3.0.0'
-            desc = 'Kronos v3.0.0 first release'
-            vcsTag = 'v3.0.0'
-        }
-    }
-}
+apply from: '../buildscript/bintray-instl.gradle'
+apply from: '../buildscript/bintray-upload.gradle'
