@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -54,10 +55,10 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     private static final int VISIBLE_DEGREES_STEP_SIZE = 30;
     private static final int HOUR_VALUE_TO_DEGREES_STEP_SIZE = VISIBLE_DEGREES_STEP_SIZE;
     private static final int MINUTE_VALUE_TO_DEGREES_STEP_SIZE = 6;
-    private static final int HOUR_INDEX = TimePickerDialog.HOUR_INDEX;
-    private static final int MINUTE_INDEX = TimePickerDialog.MINUTE_INDEX;
-    private static final int AM = TimePickerDialog.AM;
-    private static final int PM = TimePickerDialog.PM;
+    private static final int HOUR_INDEX = TimePickerFragment.HOUR_INDEX;
+    private static final int MINUTE_INDEX = TimePickerFragment.MINUTE_INDEX;
+    private static final int AM = TimePickerFragment.AM;
+    private static final int PM = TimePickerFragment.PM;
 
     private TimePoint mLastValueSelected;
 

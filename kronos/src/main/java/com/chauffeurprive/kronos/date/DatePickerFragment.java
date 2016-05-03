@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -42,7 +43,7 @@ import java.util.Locale;
 /**
  * Dialog allowing users to select a date.
  */
-public class DatePickerDialog extends Fragment implements DatePickerController {
+public class DatePickerFragment extends Fragment implements DatePickerController {
 
     private static final String TAG = "DatePickerDialog";
 
@@ -107,7 +108,7 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
          *                    with {@link Calendar}.
          * @param dayOfMonth  The day of the month that was set.
          */
-        void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth);
+        void onDateSet(DatePickerFragment view, int year, int monthOfYear, int dayOfMonth);
     }
 
     /**
@@ -118,19 +119,19 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
         void onDateChanged();
     }
 
-    public DatePickerDialog initialize(OnDateSetListener callBack, Calendar selectedDate) {
+    public DatePickerFragment initialize(OnDateSetListener callBack, Calendar selectedDate) {
         mCallBack = callBack;
         setSelectedDate(selectedDate);
         return this;
     }
 
-    public DatePickerDialog setRange(Calendar minDate, Calendar maxDate) {
+    public DatePickerFragment setRange(Calendar minDate, Calendar maxDate) {
         setMinDate(minDate);
         setMaxDate(maxDate);
         return this;
     }
 
-    public DatePickerDialog setColors(int textColor, int selectedTextColor, int accentColor, int disabledTextColor, int todayTextColor) {
+    public DatePickerFragment setColors(int textColor, int selectedTextColor, int accentColor, int disabledTextColor, int todayTextColor) {
         this.textColor = textColor;
         this.selectedTextColor = selectedTextColor;
         this.accentColor = accentColor;
@@ -176,7 +177,7 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
         // All options have been set at this point: round the initial selection if necessary
         setToNearestDate(mCalendar);
 
-        View view = inflater.inflate(R.layout.mdtp_date_picker_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_date_picker, container, false);
 
         final Activity activity = getActivity();
         mDayPickerView = new SimpleDayPickerView(activity, this);
@@ -598,7 +599,7 @@ public class DatePickerDialog extends Fragment implements DatePickerController {
 
     public void notifyOnDateListener() {
         if (mCallBack != null) {
-            mCallBack.onDateSet(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
+            mCallBack.onDateSet(DatePickerFragment.this, mCalendar.get(Calendar.YEAR),
                     mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
         }
     }

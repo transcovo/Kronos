@@ -1,3 +1,4 @@
+//Forked from wdullaer/MaterialDateTimePicker and modified by Chauffeur-Privé
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -47,7 +48,7 @@ import java.util.Locale;
 /**
  * Dialog to set a time.
  */
-public class TimePickerDialog extends Fragment implements OnValueSelectedListener, TimePickerController {
+public class TimePickerFragment extends Fragment implements OnValueSelectedListener, TimePickerController {
     private static final String TAG = "TimePickerDialog";
 
     private static final String KEY_INITIAL_TIME = "initial_time";
@@ -125,7 +126,7 @@ public class TimePickerDialog extends Fragment implements OnValueSelectedListene
         void onTimeChanging(int hourOfDay, int minute);
     }
 
-    public TimePickerDialog initialize(OnTimeSetListener callback, Calendar date, boolean is24HourMode) {
+    public TimePickerFragment initialize(OnTimeSetListener callback, Calendar date, boolean is24HourMode) {
         mCallback = callback;
 
         mInitialTime = new TimePoint(date);
@@ -139,13 +140,13 @@ public class TimePickerDialog extends Fragment implements OnValueSelectedListene
         return this;
     }
 
-    public TimePickerDialog setRange(TimePoint minTimePointForDay, TimePoint maxTimePointForDay) {
+    public TimePickerFragment setRange(TimePoint minTimePointForDay, TimePoint maxTimePointForDay) {
         setMinTime(minTimePointForDay);
         setMaxTime(maxTimePointForDay);
         return this;
     }
 
-    public TimePickerDialog setColors(int textColor, int selectedTextColor, int disabledTextColor, int accentColor, int circleBackgroundColor) {
+    public TimePickerFragment setColors(int textColor, int selectedTextColor, int disabledTextColor, int accentColor, int circleBackgroundColor) {
         this.textColor = textColor;
         this.selectedTextColor = selectedTextColor;
         this.disabledTextColor = disabledTextColor;
@@ -154,7 +155,7 @@ public class TimePickerDialog extends Fragment implements OnValueSelectedListene
         return this;
     }
 
-    public TimePickerDialog setIntervals(int hourInterval, int minuteInterval) {
+    public TimePickerFragment setIntervals(int hourInterval, int minuteInterval) {
         setTimeInterval(hourInterval, minuteInterval);
         return this;
     }
@@ -336,7 +337,7 @@ public class TimePickerDialog extends Fragment implements OnValueSelectedListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.mdtp_time_picker_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_time_picker, container, false);
         KeyboardListener keyboardListener = new KeyboardListener();
         view.findViewById(R.id.time_picker_dialog).setOnKeyListener(keyboardListener);
 
